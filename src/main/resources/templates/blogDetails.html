@@ -10,10 +10,15 @@
 
 <div class="container mt-5">
     <h1>Site blog</h1>
-    <div th:each="el : ${posts}" class="alert alert-info mt-2">
-        <h3 th:text="${el._title}"/>
-        <p th:text="${el._anons}"/>
-        <a th:href="'/blog/'+${el._id}" class="bn btn-warning">Details</a>
+    <div th:each="el : ${post}" class="alert alert-info mt-2">
+        <h1 th:text="${el._title}"/>
+        <p th:text="${el._fullText}"/>
+        <p th:text="${el._views}"/>
+
+       <p><b>Views:</b></p> <span th:href="'/blog/'+${el._id}+'/edit'" class="bn btn-warning">Edit</span><br>
+        <form th:action="'/blog'+${el._id}+'/remove'" method="post">
+            <button th:href="'/blog/'+${el._id}+'/remove'" class="bn btn-warning">Delete</button>
+        </form>
     </div>
 </div>
 
